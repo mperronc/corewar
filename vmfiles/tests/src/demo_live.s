@@ -1,4 +1,5 @@
 .name "demo live"
 .comment ""
 
-add r1, r2, r3
+st r1, 6
+live %42
