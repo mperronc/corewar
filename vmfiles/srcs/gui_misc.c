@@ -6,7 +6,7 @@
 /*   By: mperronc <mperronc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/27 13:47:59 by mperronc          #+#    #+#             */
-/*   Updated: 2017/07/31 07:32:46 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/08/02 00:29:59 by mperronc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,36 @@ char			*init_color_arena(t_argv *all)
 	return (color);
 }
 
+static void		toggle_debug(t_argv *info, t_plst *head)
+{
+	info->gui->debug = -(info->gui->debug);
+	if (info->gui->debug == 1)
+		refresh_wlist(head, info);
+	else
+		erase_wlist(info->gui->wlist_process);
+}
+
 void			handle_wait(t_argv *info, t_plst *head)
 {
 	static int	wait = 0;
 	int			ch;
 
-	refresh_display(info, head);
+	if (wait == 0 || info->gui->mode == STEP)
+		refresh_display(info, head);
 	while (wait == 0)
 	{
 		ch = getch();
-		if (ch == '1')
-			wait++;
-		else if (ch == '2')
-			wait += 10;
-		else if (ch == '3')
-			wait += 100;
-		else if (ch == '4')
-			wait += 1000;
+		if (ch >= '1' && ch <= '5')
+			wait += ft_pow(10, ch - '0' - 1);
+		else if (ch == 's')
+			wait += 1;
+		else if (ch == 'd')
+			toggle_debug(info, head);
+		else if (ch == 'm')
+		{
+			info->gui->mode = -(info->gui->mode);
+			refresh_info(info, info->gui->win_vm_info);
+		}
 	}
 	wait ? wait-- : wait;
 }

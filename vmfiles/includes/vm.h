@@ -6,7 +6,7 @@
 /*   By: mperronc <mperronc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/22 18:52:23 by mperronc          #+#    #+#             */
-/*   Updated: 2017/07/18 19:42:16 by mperronc         ###   ########.fr       */
+/*   Updated: 2017/08/02 00:30:11 by mperronc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include <ncurses.h>
 # include <time.h>
 
-# include "../../libft/includes/libft.h"
+# include "../../libft/incl/libft.h"
+# include "../../libft/incl/ft_printf.h"
 # include "defines.h"
 # include "op.h"
 # include "error.h"

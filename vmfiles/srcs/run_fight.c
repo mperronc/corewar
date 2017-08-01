@@ -6,7 +6,7 @@
 /*   By: tfontain <tfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 18:46:49 by tfontain          #+#    #+#             */
-/*   Updated: 2017/07/31 15:17:59 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/08/02 00:30:07 by mperronc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int						run(t_argv *info)
 
 	head = init_process(*info);
 	if (is_there_flag(info->f, _G_) != -1)
-		gui(info, head);
+		gui(info);
 	while (head)
 	{
 		displaydump(info);

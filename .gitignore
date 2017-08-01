@@ -1,0 +1,5 @@
+*.o
+*.cor
+libft.a
+asm/asm
+vmfiles/corewar

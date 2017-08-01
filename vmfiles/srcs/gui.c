@@ -6,7 +6,7 @@
 /*   By: mperronc <mperronc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 01:07:37 by mperronc          #+#    #+#             */
-/*   Updated: 2017/07/18 20:04:27 by mperronc         ###   ########.fr       */
+/*   Updated: 2017/08/02 00:30:03 by mperronc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void		init_gui(void)
 	init_pair(4, P4_COLOR, COLOR_BLACK);
 }
 
-void			gui(t_argv *all, t_plst *plst)
+void			gui(t_argv *all)
 {
 	int i;
 
@@ -67,7 +67,9 @@ void			gui(t_argv *all, t_plst *plst)
 	(WINDOW **)malloc(sizeof(WINDOW *) * all->n_champs);
 	all->gui->win_arena = newwin(AH, AW, 0, 0);
 	all->gui->win_vm_info = newwin(IH, IW, AH, 0);
-	all->gui->wlist_process = build_wlist(plst);
+	all->gui->wlist_process = build_wlist();
+	all->gui->debug = -1;
+	all->gui->mode = STEP;
 	i = 0;
 	while (i < all->n_champs)
 	{

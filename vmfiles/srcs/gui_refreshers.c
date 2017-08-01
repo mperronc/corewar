@@ -6,7 +6,7 @@
 /*   By: mperronc <mperronc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 19:58:50 by mperronc          #+#    #+#             */
-/*   Updated: 2017/07/31 15:26:15 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/08/02 00:30:01 by mperronc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,23 @@ void		refresh_process(WINDOW *win, WINDOW *arena, t_process *proc)
 
 void		refresh_info(t_argv *all, WINDOW *win)
 {
+	werase(win);
 	box(win, 0, 0);
 	mvwprintw(win, 0, 2, "VM STATUS");
-	mvwprintw(win, 1, 1, "CYCLE : %.6ju", all->cycle);
-	mvwprintw(win, 2, 1, "CYCLE TO DIE : %.6jd", all->cycle_to_die);
-	mvwprintw(win, 3, 1, "CHECKS : %.6ju", all->checks);
-	mvwprintw(win, 4, 1, "LAST LIVING PLAYER : %.6d", *last_living_player());
+	mvwprintw(win, 1, 35, "GUI MODE : %s", all->gui->mode == 1 ?
+									"STEP MODE" : "INSTANT MODE");
+	mvwprintw(win, 1, 1, "CYCLE : %d", all->cycle);
+	mvwprintw(win, 2, 1, "CYCLE TO DIE : %d", all->cycle_to_die);
+	mvwprintw(win, 3, 1, "CYCLE DELTA : %d", CYCLE_DELTA);
+	mvwprintw(win, 4, 1, "CHECKS : %d", all->checks);
+	mvwprintw(win, 5, 1, "MAX CHECKS : %d", MAX_CHECKS);
+	mvwprintw(win, 6, 1, "LAST LIVING PLAYER : %d", *last_living_player());
+	mvwprintw(win, 8, 1, "Controls :");
+	mvwprintw(win, 9, 1, "S to step forward one cycle.");
+	mvwprintw(win, 10, 1, "D to toggle debug view");
+	mvwprintw(win, 11, 1, "1-9 to skip forward 1, 10, 100 ... cycles");
+	mvwprintw(win, 12, 1, "M to toggle between step mode or instant mode");
+	mvwprintw(win, 14, 1, "by tfontain, jgagnot and mperronc @ 42 - 2017");
 	wrefresh(win);
 }
 
@@ -78,8 +89,8 @@ void		refresh_champion(t_header *champ, WINDOW *win, int i)
 {
 	box(win, 0, 0);
 	mvwprintw(win, 0, 2, "CHAMPION %d", i);
-	mvwprintw(win, 1, 1, "%.58s", champ->prog_name);
-	mvwprintw(win, 2, 1, "%.58s", champ->comment);
+	mvwprintw(win, 1, 1, "%.130s", champ->prog_name);
+	mvwprintw(win, 2, 1, "%.130s", champ->comment);
 	wrefresh(win);
 }
 
@@ -95,5 +106,6 @@ void		refresh_display(t_argv *all, t_plst *head)
 		refresh_champion(&(all->champ[i]), all->gui->win_champions[i], i + 1);
 		i++;
 	}
-	refresh_wlist(head, all);
+	if (all->gui->debug == 1)
+		refresh_wlist(head, all);
 }

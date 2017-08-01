@@ -6,7 +6,7 @@
 /*   By: mperronc <mperronc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/24 18:45:06 by mperronc          #+#    #+#             */
-/*   Updated: 2017/07/30 23:01:21 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/08/02 00:29:58 by mperronc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,17 @@ static void		free_champs(WINDOW **wins, int n)
 	free(wins);
 }
 
-static void		free_wlist(t_wlist *wlist)
+static void		free_wlist(WINDOW **wlist)
 {
-	t_wlist		*cur;
-	t_wlist		*tmp;
+	int n;
 
-	cur = wlist;
-	while (cur)
+	n = 0;
+	while (n < DEBUG_MAX_PROC)
 	{
-		tmp = cur;
-		cur = cur->next;
-		delwin(tmp->win);
-		free(tmp);
+		delwin(wlist[n]);
+		n++;
 	}
+	free(wlist);
 }
 
 void			free_gui(t_argv *all)

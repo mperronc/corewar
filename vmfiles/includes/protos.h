@@ -6,7 +6,7 @@
 /*   By: mperronc <mperronc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/22 18:50:43 by mperronc          #+#    #+#             */
-/*   Updated: 2017/07/31 07:32:01 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/08/02 00:30:26 by mperronc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int			op_aff(t_process *proc, t_instruct *instruct);
 
 int			run(t_argv *info);
 
-void		gui(t_argv *all, t_plst *head);
+void		gui(t_argv *all);
 void		free_gui(t_argv *all);
 char		*init_color_arena(t_argv *all);
 void		handle_wait(t_argv *info, t_plst *head);
@@ -93,6 +93,7 @@ void		refresh_info(t_argv *all, WINDOW *win);
 void		refresh_process(WINDOW *win, WINDOW *arena, t_process *proc);
 void		refresh_arena(char *arena, char *color, WINDOW *win);
 void		refresh_wlist(t_plst *plst, t_argv *all);
-t_wlist		*build_wlist(t_plst *plst);
+WINDOW		**build_wlist(void);
+void		erase_wlist(WINDOW **wlist);
 
 #endif
