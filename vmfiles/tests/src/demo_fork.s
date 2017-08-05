@@ -1,4 +1,4 @@
 .name "demo fork"
-.comment
+.comment ""
 
 fork %42

@@ -6,7 +6,7 @@
 /*   By: mperronc <mperronc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/20 19:45:05 by mperronc          #+#    #+#             */
-/*   Updated: 2017/07/31 06:31:37 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/08/05 23:28:19 by mperronc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	op_aff(t_process *proc, t_instruct *instruct)
 	if (reg_num < 1 || reg_num > REG_NUMBER)
 		return (0);
 	if ((*flags() & _G_) == 0)
-		ft_putchar(proc->reg[reg_num - 1] % 256);
+		ft_printf("Champion %d says : %c\n", proc->id,
+		proc->reg[reg_num - 1] % 256);
 	proc->pc = (proc->pc + instruct->size) % MEM_SIZE;
 	return (1);
 }
@@ -112,7 +113,7 @@ int	op_lldi(t_process *proc, t_instruct *instruct, char *arena)
 	{
 		if (!is_valid_reg(instruct->args[1]))
 			return (proc->pc = (proc->pc + instruct->size) % MEM_SIZE);
-		val = proc->reg[instruct->args[1] - 1];
+		val += proc->reg[instruct->args[1] - 1];
 	}
 	else
 		val += instruct->args[1];
