@@ -6,7 +6,7 @@
 /*   By: mperronc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 20:45:41 by mperronc          #+#    #+#             */
-/*   Updated: 2016/02/11 17:44:14 by mperronc         ###   ########.fr       */
+/*   Updated: 2017/08/08 19:37:44 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	ft_putstr(char const *s)
 {
-	while (*s != 0)
+	if (s != NULL)
 	{
-		ft_putchar(*s);
-		s++;
+		write(1, s, ft_strlen(s));
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: tfontain <tfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/02 01:43:01 by tfontain          #+#    #+#             */
-/*   Updated: 2017/07/28 07:08:07 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/08/08 19:20:20 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define _ERR_CH_TOO_BIG 7
 # define _ERR_TOO_MANY_CH 8
 # define _ERR_BAD_NFLAG 9
+# define _ERR_BAD_FLAG 10
 
 typedef void(*t_ptft)();
 t_ptft	error(int err);

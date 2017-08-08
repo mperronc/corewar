@@ -6,7 +6,7 @@
 /*   By: tfontain <tfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/28 20:35:26 by tfontain          #+#    #+#             */
-/*   Updated: 2017/07/31 13:36:30 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/08/08 19:28:24 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static inline void		case_flag(int *ac, const char **av[], t_argv *ret,
 	}
 	else if ((**av)[1] == 'g')
 		ret->f.flag |= _G_;
+	else
+		error(_ERR_BAD_FLAG)((**av));
 }
 
 static inline void		case_player(int *n, t_argv ret, const char *av[],

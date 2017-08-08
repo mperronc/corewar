@@ -6,7 +6,7 @@
 /*   By: tfontain <tfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/27 20:50:11 by tfontain          #+#    #+#             */
-/*   Updated: 2017/07/29 06:17:16 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/08/08 19:28:54 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ void		bad_nflag(void)
 {
 	ft_putstr("[-n N] argument have to specifie a number between 1 and the ");
 	ft_putstr("number of players. All numbers must be differents.\n");
+	exit(-1);
+}
+
+void		bad_flag(const char *s)
+{
+	ft_putstr(s);
+	ft_putstr(" flag is not available.");
 	exit(-1);
 }
 
@@ -39,6 +46,8 @@ void		(*error(int err))()
 		return (too_many_champions);
 	if (err == _ERR_BAD_NFLAG)
 		return (bad_nflag);
+	if (err == _ERR_BAD_FLAG)
+		return (bad_flag);
 	return (NULL);
 }
 

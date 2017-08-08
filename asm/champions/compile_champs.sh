@@ -6,7 +6,7 @@
 #    By: mperronc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/31 20:31:43 by mperronc          #+#    #+#              #
-#    Updated: 2017/07/31 20:41:32 by mperronc         ###   ########.fr        #
+#    Updated: 2017/08/08 19:46:57 by tfontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,4 +16,7 @@ do
 	../asm $f
 done
 
+if [ ! -d "bin" ]; then
+	mkdir bin
+fi
 mv src/*.cor bin/
