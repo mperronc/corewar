@@ -1,5 +1,7 @@
 # corewar
 
+Written with [Jéremy Gagnot](https://github.com/jgagnot) and [Thibaut Fontaine](https://github.com/Thibaut-Fontaine)
+
 Corewar is a pretty confusing project involving a questionable VM and some pieces of bytecode fighting for their life.
 
 It is divided in two parts.
